@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Soulsbourne Respeccer</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="" />
+    <link rel="icon" href="favicon.png">
+</head>
+<body>
+    <h2>Initial Stats</h2>
+    <label for="skillOne">Strength</label>
+    <input type="number" id="skillOne" min="1" max="99" step="1" value="10"></input>
+    <br>
+    <label for="skillTwo">Dexterity</label>
+    <input type="number" id="skillTwo" min="1" max="99" step="1" value="10"></input>   
+    <br>
+    <label for="skillThree">Intelligence</label>
+    <input type="number" id="skillThree" min="1" max="99" step="1" value="10"></input>    
+    <br>
+    <label for="skillFour">Faith</label>
+    <input type="number" id="skillFour" min="1" max="99" step="1" value="10"></input>
+    <br>
+    <label for="levelInput">Levels To Input</label>
+    <input type="number" id="levelInput" min="0" max="713" step="1", value="0"></input>
+    <br>
+    <h2>Weapon Properties</h2>
+    <label for="skillOneGrade">Strength</label>
+    <select id="skillOneGrade">
+        <option value="F">-</option>
+        <option value="S">S</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+    </select>
+    <input type="number" id="skillOneRequirement" min="1" max="99" step="1" value="10"></input>
+   <br>
+    <label for="skillTwoGrade">Dexterity</label>
+    <select id="skillTwoGrade">
+        <option value="F">-</option>
+        <option value="S">S</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+    </select>
+    <input type="number" id="skillTwoRequirement" min="1" max="99" step="1" value="10"></input>   
+    <br>
+    <label for="skillThreeGrade">Intelligence</label>
+    <select id="skillThreeGrade">
+        <option value="F">-</option>
+        <option value="S">S</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+    </select>
+    <input type="number" id="skillThreeRequirement" min="1" max="99" step="1" value="10"></input>    
+    <br>
+    <label for="skillFourGrade">Faith</label>
+    <select id="skillFourGrade">
+        <option value="F">-</option>
+        <option value="S">S</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+    </select>
+    <input type="number" id="skillFourRequirement" min="1" max="99" step="1" value="10"></input>
+    <br>
+    <label for="physicalDamage">Base Physical Damage</label>
+    <input type="number" id="physicalDamage" type="number" min="0"></input>
+    <br>
+    <label for="magicDamage">Base Magic Damage</label>
+    <input type="number" id="magicDamage" type="number" min="0"></input>
+    <div id="output" style="margin-bottom: 20px;">
+        <h2>Optimal Solution</h2>
+        <label for="skillOneOutput">Strength</label>
+        <input type="text" id="skillOneOutput" style="width: 2.5%;" value="10" readonly></input>
+        <label for="skillTwoOutput">Dexterity</label>
+        <input type="text" id="skillTwoOutput" style="width: 2.5%;" value="10" readonly></input>   
+        <label for="skillThreeOutput">Intelligence</label>
+        <input type="text" id="skillThreeOutput" style="width: 2.5%;" value="10" readonly></input>    
+        <label for="skillFourOutput">Faith</label>
+        <input type="text" id="skillFourOutput" style="width: 2.5%;" value="10" readonly></input>
+    </div>
+    <br>
+    <button id="respecButton">Respec</button>
+    <script src="script.js"></script>
+</body>
+</html>
