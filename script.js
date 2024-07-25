@@ -8,7 +8,7 @@
 function getSoftCapGradient(skillPoints, softCapLocations) {
     if (skillPoints >= 99) return 0;
     for (let i=0; i < softCapLocations.length - 1; i++) {
-        if (softCapLocations[i] <= skillPoints < softCapLocations[i+1]) return 0.5**(i+1)
+        if (softCapLocations[i] <= skillPoints && skillPoints < softCapLocations[i+1]) return 0.5**(i+1)
     }
 }
 
