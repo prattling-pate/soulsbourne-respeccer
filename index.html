@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="" />
     <link rel="icon" href="favicon.jpg">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h2>Initial Stats</h2>
@@ -83,17 +84,17 @@
     <br>
     <label for="magicDamage">Base Magic Damage</label>
     <input type="number" id="magicDamage" type="number" min="0"></input>
-    <div id="output" style="margin-bottom: 20px;">
-        <h2>Optimal Solution</h2>
-        <p>Optimal stats to maximise damage output</p>
+    <h2>Optimal Solution</h2>
+    <p>Optimal stats to maximise damage output</p>
+    <div id="output">
         <label for="skillOneOutput">Strength</label>
-        <input type="text" id="skillOneOutput" style="width: 2.5%;" value="10" readonly></input>
+        <input type="text" id="skillOneOutput" value="10" readonly></input>
         <label for="skillTwoOutput">Dexterity</label>
-        <input type="text" id="skillTwoOutput" style="width: 2.5%;" value="10" readonly></input>   
+        <input type="text" id="skillTwoOutput" value="10" readonly></input>   
         <label for="skillThreeOutput">Intelligence</label>
-        <input type="text" id="skillThreeOutput" style="width: 2.5%;" value="10" readonly></input>    
+        <input type="text" id="skillThreeOutput" value="10" readonly></input>    
         <label for="skillFourOutput">Faith</label>
-        <input type="text" id="skillFourOutput" style="width: 2.5%;" value="10" readonly></input>
+        <input type="text" id="skillFourOutput" value="10" readonly></input>
     </div>
     <br>
     <button id="respecButton">Respec</button>
