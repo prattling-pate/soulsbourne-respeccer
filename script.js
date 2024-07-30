@@ -45,7 +45,7 @@ function getGreatestChangeSkill(weapon, floats, skillPoints) {
             damageRatings[i] *= getSoftCapGradient(skillPoints[i],
                 [1, 10, 30, 50, 99]) * weapon.magicDamage;
         }
-        if (damageRatings[i] > damageRatings[maxI]) maxI = i;
+        if (damageRatings[i] > damageRatings[maxI] || skillPoints[maxI] >= 99) maxI = i;
     }
     return maxI;
 }
@@ -65,56 +65,68 @@ function maximiseDamage(weapon, defaultSkills, levels, floats=false) {
             x[i] = requirementI;
             levels -= x[i];
         }
-        if (levels < 0) throw new Error("Build is not feasible!");
-        while (levels > 0) {
-            let skill = getGreatestChangeSkill(weapon, floats, x);
-            x[skill]++;
-            levels--;
-        }
+    }
+    if (levels < 0) throw new Error("Build is not feasible!");
+    while (levels > 0) {
+        let skill = getGreatestChangeSkill(weapon, floats, x);
+        x[skill]++;
+        levels--;
     }
     return x;
 }
 
+function getNumberFromElement(elementId) {
+    const number = parseInt(document.getElementById(elementId).value);
+    if (isNaN(number)) throw new Error("Please enter a valid number.");
+    return number;
+}
+
 function getDefaultSkills() {
-    const defaultSkills = [parseInt(document.getElementById("skillOne").value),
-        parseInt(document.getElementById("skillTwo").value),
-        parseInt(document.getElementById("skillThree").value),
-        parseInt(document.getElementById("skillFour").value)];
+    const defaultSkills = [getNumberFromElement("skillDamageOne"),
+        getNumberFromElement("skillDamageTwo"),
+        getNumberFromElement("skillDamageThree"),
+        getNumberFromElement("skillDamageFour")];
     return defaultSkills;
 }
 
 function getLevels() {
-    const levels = parseInt(document.getElementById("levelInput").value);
+    const levels = getNumberFromElement("levelInput");
     return levels;
 }
 
 function getWeapon() {
     const weapon = {
-        grades : [document.getElementById("skillOneGrade").value,
-            document.getElementById("skillTwoGrade").value,
-            document.getElementById("skillThreeGrade").value,
-            document.getElementById("skillFourGrade").value],
-        requirements : [parseInt(document.getElementById("skillOneRequirement").value),
-            parseInt(document.getElementById("skillTwoRequirement").value),
-            parseInt(document.getElementById("skillThreeRequirement").value),
-            parseInt(document.getElementById("skillFourRequirement").value)],
-        physicalDamage : parseInt(document.getElementById("physicalDamage").value),
-        magicDamage : parseInt(document.getElementById("magicDamage").value)
+        grades : [document.getElementById("skillDamageOneGrade").value,
+            document.getElementById("skillDamageTwoGrade").value,
+            document.getElementById("skillDamageThreeGrade").value,
+            document.getElementById("skillDamageFourGrade").value],
+        requirements : [getNumberFromElement("skillDamageOneRequirement"),
+            getNumberFromElement("skillDamageTwoRequirement"),
+            getNumberFromElement("skillDamageThreeRequirement"),
+            getNumberFromElement("skillDamageFourRequirement")],
+        physicalDamage : getNumberFromElement("physicalDamage"),
+        magicDamage : getNumberFromElement("magicDamage")
     };
     return weapon;
 }
 
 function setOutputSkills(solution) {
-    document.getElementById("skillOneOutput").value = solution[0];
-    document.getElementById("skillTwoOutput").value = solution[1];
-    document.getElementById("skillThreeOutput").value = solution[2];
-    document.getElementById("skillFourOutput").value = solution[3];
+    document.getElementById("skillDamageOneOutput").value = solution[0];
+    document.getElementById("skillDamageTwoOutput").value = solution[1];
+    document.getElementById("skillDamageThreeOutput").value = solution[2];
+    document.getElementById("skillDamageFourOutput").value = solution[3];
 }
 
 document.getElementById("respecButton").onclick = () => {
-    let defaultSkills = getDefaultSkills();
-    let levels = getLevels();
-    let weapon = getWeapon();
-    const solution = maximiseDamage(weapon, defaultSkills, levels);
+    try {
+        let defaultSkills = getDefaultSkills();
+        let levels = getLevels();
+        let weapon = getWeapon();
+        var solution = maximiseDamage(weapon, defaultSkills, levels);
+    }
+    catch (error) {
+        alert(error.message);
+        return;
+    }
     setOutputSkills(solution);
 }

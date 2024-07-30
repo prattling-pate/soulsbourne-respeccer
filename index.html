@@ -9,23 +9,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Soulsbourne Respeccer</h1>
     <h2>Initial Stats</h2>
     <p>Input your current stats and number of levels to put into them</p>
     <img class="skillSprite" src="images/dark_souls/strength_sprite.png">
-    <label for="skillOne">Strength</label>
-    <input type="number" id="skillOne" min="1" max="99" step="1" value="10"></input>
+    <label for="skillDamageOne">Strength</label>
+    <input type="number" id="skillDamageOne" min="1" max="99" step="1" value="10"></input>
     <br>
     <img class="skillSprite" src="images/dark_souls/dexterity_sprite.png">
-    <label for="skillTwo">Dexterity</label>
-    <input type="number" id="skillTwo" min="1" max="99" step="1" value="10"></input>   
+    <label for="skillDamageTwo">Dexterity</label>
+    <input type="number" id="skillDamageTwo" min="1" max="99" step="1" value="10"></input>   
     <br>
     <img class="skillSprite" src="images/dark_souls/intelligence_sprite.png">
-    <label for="skillThree">Intelligence</label>
-    <input type="number" id="skillThree" min="1" max="99" step="1" value="10"></input>    
+    <label for="skillDamageThree">Intelligence</label>
+    <input type="number" id="skillDamageThree" min="1" max="99" step="1" value="10"></input>    
     <br>
     <img class="skillSprite" src="images/dark_souls/faith_sprite.png">
-    <label for="skillFour">Faith</label>
-    <input type="number" id="skillFour" min="1" max="99" step="1" value="10"></input>
+    <label for="skillDamageFour">Faith</label>
+    <input type="number" id="skillDamageFour" min="1" max="99" step="1" value="10"></input>
     <br>
     <img class="skillSprite" src="images/dark_souls/level_sprite.png">
     <label for="levelInput">Levels To Input</label>
@@ -37,8 +38,8 @@
     <p>For stat requirements, input the minimum stat required to wield the weapon.</p>
     <p>Note that all number values must be non-negative integers.</p>
     <img class="skillSprite" src="images/dark_souls/strength_sprite.png">
-    <label for="skillOneGrade">Strength</label>
-    <select id="skillOneGrade">
+    <label for="skillDamageOneGrade">Strength</label>
+    <select id="skillDamageOneGrade">
         <option value="F">-</option>
         <option value="S">S</option>
         <option value="A">A</option>
@@ -47,11 +48,11 @@
         <option value="D">D</option>
         <option value="E">E</option>
     </select>
-    <input type="number" id="skillOneRequirement" min="1" max="99" step="1" value="10"></input>
+    <input type="number" id="skillDamageOneRequirement" min="1" max="99" step="1" value="10"></input>
    <br>
     <img class="skillSprite" src="images/dark_souls/dexterity_sprite.png">
-    <label for="skillTwoGrade">Dexterity</label>
-    <select id="skillTwoGrade">
+    <label for="skillDamageTwoGrade">Dexterity</label>
+    <select id="skillDamageTwoGrade">
         <option value="F">-</option>
         <option value="S">S</option>
         <option value="A">A</option>
@@ -60,11 +61,11 @@
         <option value="D">D</option>
         <option value="E">E</option>
     </select>
-    <input type="number" id="skillTwoRequirement" min="1" max="99" step="1" value="10"></input>   
+    <input type="number" id="skillDamageTwoRequirement" min="1" max="99" step="1" value="10"></input>   
     <br>
     <img class="skillSprite" src="images/dark_souls/intelligence_sprite.png">
-    <label for="skillThreeGrade">Intelligence</label>
-    <select id="skillThreeGrade">
+    <label for="skillDamageThreeGrade">Intelligence</label>
+    <select id="skillDamageThreeGrade">
         <option value="F">-</option>
         <option value="S">S</option>
         <option value="A">A</option>
@@ -73,11 +74,11 @@
         <option value="D">D</option>
         <option value="E">E</option>
     </select>
-    <input type="number" id="skillThreeRequirement" min="1" max="99" step="1" value="10"></input>    
+    <input type="number" id="skillDamageThreeRequirement" min="1" max="99" step="1" value="10"></input>    
     <br>
     <img class="skillSprite" src="images/dark_souls/faith_sprite.png">
-    <label for="skillFourGrade">Faith</label>
-    <select id="skillFourGrade">
+    <label for="skillDamageFourGrade">Faith</label>
+    <select id="skillDamageFourGrade">
         <option value="F">-</option>
         <option value="S">S</option>
         <option value="A">A</option>
@@ -86,26 +87,26 @@
         <option value="D">D</option>
         <option value="E">E</option>
     </select>
-    <input type="number" id="skillFourRequirement" min="1" max="99" step="1" value="10"></input>
+    <input type="number" id="skillDamageFourRequirement" min="1" max="99" step="1" value="10"></input>
     <br>
     <label for="physicalDamage">Base Physical Damage</label>
-    <input type="number" id="physicalDamage" type="number" min="0"></input>
+    <input type="number" id="physicalDamage" type="number" min="0" value="0"></input>
     <br>
     <label for="magicDamage">Base Magic Damage</label>
-    <input type="number" id="magicDamage" type="number" min="0"></input>
+    <input type="number" id="magicDamage" type="number" min="0" value="0"></input>
     <br>
     <button id="respecButton">Respec</button>
     <h2>Optimal Solution</h2>
     <p>Optimal stats to maximise damage output</p>
     <div id="output">
-        <label for="skillOneOutput">Strength</label>
-        <input type="text" id="skillOneOutput" value="10" readonly></input>
-        <label for="skillTwoOutput">Dexterity</label>
-        <input type="text" id="skillTwoOutput" value="10" readonly></input>   
-        <label for="skillThreeOutput">Intelligence</label>
-        <input type="text" id="skillThreeOutput" value="10" readonly></input>    
-        <label for="skillFourOutput">Faith</label>
-        <input type="text" id="skillFourOutput" value="10" readonly></input>
+        <label for="skillDamageOneOutput">Strength</label>
+        <input type="text" id="skillDamageOneOutput" value="10" readonly></input>
+        <label for="skillDamageTwoOutput">Dexterity</label>
+        <input type="text" id="skillDamageTwoOutput" value="10" readonly></input>   
+        <label for="skillDamageThreeOutput">Intelligence</label>
+        <input type="text" id="skillDamageThreeOutput" value="10" readonly></input>    
+        <label for="skillDamageFourOutput">Faith</label>
+        <input type="text" id="skillDamageFourOutput" value="10" readonly></input>
     </div>
     <br>
     <script src="script.js"></script>
