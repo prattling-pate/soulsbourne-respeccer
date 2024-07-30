@@ -63,7 +63,7 @@ function maximiseDamage(weapon, defaultSkills, levels, floats=false) {
         let requirementI = weapon.requirements[i];
         if (requirementI > x[i]) {
             x[i] = requirementI;
-            levels -= x[i];
+            levels -= requirementI - defaultSkills[i];
         }
     }
     if (levels < 0) throw new Error("Build is not feasible!");
