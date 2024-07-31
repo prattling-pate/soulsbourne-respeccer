@@ -95,11 +95,19 @@ function getLevels() {
 }
 
 function getWeapon() {
+    let gradeType = document.getElementById("scaleType").value;
+    let grades = [document.getElementById("skillDamageOneGrade").value,
+        document.getElementById("skillDamageTwoGrade").value,
+        document.getElementById("skillDamageThreeGrade").value,
+        document.getElementById("skillDamageFourGrade").value];
+    if (gradeType === "float") {
+        grades = [parseFloat(document.getElementById("skillDamageOneGradeFloat").value),
+        parseFloat(document.getElementById("skillDamageTwoGradeFloat").value),
+        parseFloat(document.getElementById("skillDamageThreeGradeFloat").value),
+        parseFloat(document.getElementById("skillDamageFourGradeFloat").value)];
+    }
     const weapon = {
-        grades : [document.getElementById("skillDamageOneGrade").value,
-            document.getElementById("skillDamageTwoGrade").value,
-            document.getElementById("skillDamageThreeGrade").value,
-            document.getElementById("skillDamageFourGrade").value],
+        grades : grades,
         requirements : [getNumberFromElement("skillDamageOneRequirement"),
             getNumberFromElement("skillDamageTwoRequirement"),
             getNumberFromElement("skillDamageThreeRequirement"),
@@ -122,7 +130,8 @@ document.getElementById("respecButton").onclick = () => {
         let defaultSkills = getDefaultSkills();
         let levels = getLevels();
         let weapon = getWeapon();
-        var solution = maximiseDamage(weapon, defaultSkills, levels);
+        const float = document.getElementById("scaleType").value === "float";
+        var solution = maximiseDamage(weapon, defaultSkills, levels, float);
     }
     catch (error) {
         alert(error.message);

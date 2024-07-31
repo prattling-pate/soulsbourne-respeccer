@@ -1,9 +1,15 @@
-.output {
-    width: 2.5%;
-}
-
 .skillSprite {
     height: 0.9em;
+}
+
+input[type="range"] {
+  accent-color: lightslategrey; 
+}
+
+.grades {
+}
+
+.floats {
 }
 
 body {
