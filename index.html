@@ -11,8 +11,8 @@
 </head>
 <body>
     <h1>Soulsbourne Respeccer</h1>
-    <h2>Initial Stats</h2>
-    <p>Input your current stats and number of levels to put into them</p>
+        <h2>Initial Stats</h2>
+    <p class="instructions">Input your current stats and number of levels to put into them</p>
     <table style="width:25%">
       <tr>
         <th>Skill</th>
@@ -139,16 +139,94 @@
         </tr>
     </table>
     <h2>Basic Skill Distribution</h2>
-    <p>Rank the order of importance of the basic skills (Vitality, Attunement, Endurance, Resistance) to distribute them as you want.</p>
-    <p>Alternatively, click toggle respeccing for these so you can input them yourself.</p>
+    <div class="instructions">
+        <p>Rank the order of importance of the basic skills (Vitality, Attunement, Endurance, Resistance) to distribute them as you want.</p>
+        <p>Alternatively, click toggle respeccing for these so you can input them yourself.</p>
+    </div>
     <label for="toggleBasicRespec"><b>Toggle Basic Skill Respec</b></label>
-    <input type="checkbox" id="toggleMiscRespec"></input>
+    <input type="checkbox" id="toggleBasicRespec" checked></input>
+    <table class="basicSkills" style="width: 30%;">
+        <tr>
+            <th>Skill</th>
+            <th>Rank</th>
+        </tr>
+        <tr>
+            <td>
+                <img class="skillSprite" src="images/dark_souls/vitality_sprite.png">
+                <label for="skillMiscOneRank">Vitality</label>
+            </td>
+            <td>
+                <select id="skillMiscOneRank">
+                    <option value="F">-</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img class="skillSprite" src="images/dark_souls/attunement_sprite.png">
+                <label for="skillMiscTwoRank">Attunement</label>
+            </td>
+            <td>
+                <select id="skillMiscTwoRank">
+                    <option value="F">-</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img class="skillSprite" src="images/dark_souls/endurance_sprite.png">
+                <label for="skillMiscThreeRank">Endurance</label>
+            </td>
+            <td> <select id="skillMiscThreeRank">
+                    <option value="F">-</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img class="skillSprite" src="images/dark_souls/resistance_sprite.png">
+                <label for="skillMiscFourRank">Resistance</label>
+            </td> 
+            <td>
+                <select id="skillMiscFourRank">
+                    <option value="F">-</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+            </td>
+        </tr>
+    </table>
     <h2>Weapon Properties</h2>
-    <p>Input damage scaling (letter grades), stat requirements to wield them and their base damages (physical and magical) to find the optimal stats to maximise damage output.</p>
-    <p>For damage scaling, input the letter grade (S, A, B, C, D, E) or "-" if the weapon does not scale with that stat.</p>
-    <p>For stat requirements, input the minimum stat required to wield the weapon.</p>
-    <p>Note that all number values must be non-negative integers.</p>
-    <p>Click the "Respec" button to calculate the optimal stats to maximise damage output.</p>
+    <div class="instructions">
+        <p>Input damage scaling (letter grades), stat requirements to wield them and their base damages (physical and magical) to find the optimal stats to maximise damage output.</p>
+        <p>For damage scaling, input the letter grade (S, A, B, C, D, E) or "-" if the weapon does not scale with that stat.</p>
+        <p>For stat requirements, input the minimum stat required to wield the weapon.</p>
+        <p>Note that all number values must be non-negative integers.</p>
+        <p>Click the "Respec" button to calculate the optimal stats to maximise damage output.</p>
+    </div>
     <label for="scaleType"><b>Scale type for weapon skills</b></label>
     <br>
     <select id="scaleType">
@@ -348,6 +426,10 @@
       </tr>
     </table>
     <br>
+    <h3>Settings</h3>
+    <p class="instructions"><b>Contains settings for the site.</b></p>
+    <label for="toggleInstructions">Toggle Instructions</label>
+    <input type="checkbox" id="toggleInstructions" checked></input>
     <script src="scripts/site_dynamics.js"></script>
     <script src="scripts/script.js"></script>
 </body>

@@ -90,7 +90,7 @@ function getDefaultSkills() {
 }
 
 function getLevels() {
-    const levels = getNumberFromElement("levelInput");
+    const levels = getNumberFromElement("damageSkillInput");
     return levels;
 }
 

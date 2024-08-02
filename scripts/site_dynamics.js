@@ -55,3 +55,23 @@ document.getElementById("levelInputRange").addEventListener("input", updateLevel
 document.getElementById("levelInputNumber").addEventListener("input", updateLevels)
 document.getElementById("damageSkillInput").addEventListener("input", updateSplit)
 document.getElementById("miscSkillInput").addEventListener("input", updateSplit)
+
+
+// hide/show the basic skill ranking based on toggle checkbox
+document.getElementById("toggleBasicRespec").addEventListener("change", function() {
+    if (document.getElementById("toggleBasicRespec").checked) {
+        $(".basicSkills").show();
+    }
+    else {
+        $(".basicSkills").hide();
+    }
+})
+
+document.getElementById("toggleInstructions").addEventListener("change", function() {
+    if (document.getElementById("toggleInstructions").checked) {
+        $(".instructions").show();
+    }
+    else {
+        $(".instructions").hide();
+    }
+})
