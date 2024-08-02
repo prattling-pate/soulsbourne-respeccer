@@ -12,12 +12,21 @@ document.getElementById("scaleType").addEventListener("change", function() {
 })
 
 // These event listeners form a two-way binding between the range and number input fields for the level input
-document.getElementById("levelInputRange").addEventListener("input", function() {
+document.getElementById("levelInputRange").addEventListener("change", function() {
     document.getElementById("levelInputNumber").value = document.getElementById("levelInputRange").value;
 })
 
-document.getElementById("levelInputNumber").addEventListener("input", function() {
+document.getElementById("levelInputNumber").addEventListener("change", function() {
     document.getElementById("levelInputRange").value = document.getElementById("levelInputNumber").value;
+})
+
+document.getElementById("levelInput").addEventListener("change", function() {
+    if (document.getElementById("levelInput").value > document.getElementById("levelInput").max) {
+        document.getElementById("levelInput").value = document.getElementById("levelInput").max;
+    }
+    if (document.getElementById("levelInput").value < document.getElementById("levelInput").min) {
+        document.getElementById("levelInput").value = document.getElementById("levelInput").min;
+    }
 })
 
 // ensure that level split range and number inputs are in the range (0 <= x <= 100)
@@ -50,11 +59,11 @@ const updateSplit = function() {
 }
 
 // calculate the split levels on the fly
-document.getElementById("levelInput").addEventListener("input", updateLevels)
-document.getElementById("levelInputRange").addEventListener("input", updateLevels)
-document.getElementById("levelInputNumber").addEventListener("input", updateLevels)
-document.getElementById("damageSkillInput").addEventListener("input", updateSplit)
-document.getElementById("miscSkillInput").addEventListener("input", updateSplit)
+document.getElementById("levelInput").addEventListener("change", updateLevels)
+document.getElementById("levelInputRange").addEventListener("change", updateLevels)
+document.getElementById("levelInputNumber").addEventListener("change", updateLevels)
+document.getElementById("damageSkillInput").addEventListener("change", updateSplit)
+document.getElementById("miscSkillInput").addEventListener("change", updateSplit)
 
 
 // hide/show the basic skill ranking based on toggle checkbox
@@ -74,4 +83,15 @@ document.getElementById("toggleInstructions").addEventListener("change", functio
     else {
         $(".instructions").hide();
     }
+})
+
+// update the maximum value for level input based on the initial stats of the player
+$(".initialStats").on("change", function() {
+    let sum = 0;
+    sum += parseInt(document.getElementById("skillDamageOne").value) + parseInt(document.getElementById("skillMiscOne").value);
+    sum += parseInt(document.getElementById("skillDamageTwo").value) + parseInt(document.getElementById("skillMiscTwo").value);
+    sum += parseInt(document.getElementById("skillDamageThree").value) + parseInt(document.getElementById("skillMiscThree").value);
+    sum += parseInt(document.getElementById("skillDamageFour").value) + parseInt(document.getElementById("skillMiscFour").value);
+    const maxLevel = 99*8 - sum;
+    document.getElementById("levelInput").max = maxLevel;
 })

@@ -2,6 +2,9 @@
     height: 0.9em;
 }
 
+.initialStats{
+}
+
 input[type="range"] {
   accent-color: lightslategrey; 
 }
