@@ -99,11 +99,38 @@
             <input type="number" id="levelInput" min="0" max="713" step="1", value="0"></input>
         </td>
     </table>
+    <table style="width: 25%;">
+        <th>Skill Type</th>
+        <th>Points</th>
+        <tr>
+            <td>
+                <label for="damageSkillInput">Damaging Skills</label>
+            </td>
+            <td>
+                <input type="number" id="damageSkillInput" min="0" max="713" step="1" value="0" readonly></input>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="miscSkillInput">Misc Skills</label>
+            </td>
+            <td>
+                <input type="number" id="miscSkillInput" min="0" max="713" step="1" value="0" readonly></input>
+            </td>
+        </tr>
+    </table>
     <label for="levelInputRange">Show split between damaging skills and other skills</label>
-    <br>
-    <input class="levelInput" type="range" id="levelInputRange"></input>
-    <input class="levelInput" type="number" id="levelInputNumber" value="50" min="1" max="100"></input>%
-    <h2>Weapon Properties</h2>
+    <table style="width: 25%;">
+        <tr>
+            <td>
+                <input type="range" id="levelInputRange" min="0" max="100" step="1" value="50"></input>
+            </td>
+            <td>
+                <input type="number" id="levelInputNumber" min="0" max="100" step="1" value="50"></input>
+            </td>
+        </tr>
+    </table>
+   <h2>Weapon Properties</h2>
     <p>Input damage scaling (letter grades), stat requirements to wield them and their base damages (physical and magical) to find the optimal stats to maximise damage output.</p>
     <p>For damage scaling, input the letter grade (S, A, B, C, D, E) or "-" if the weapon does not scale with that stat.</p>
     <p>For stat requirements, input the minimum stat required to wield the weapon.</p>
