@@ -21,21 +21,23 @@ document.getElementById("levelInputNumber").addEventListener("change", function(
 })
 
 document.getElementById("levelInput").addEventListener("change", function() {
-    if (document.getElementById("levelInput").value > document.getElementById("levelInput").max) {
-        document.getElementById("levelInput").value = document.getElementById("levelInput").max;
+    const element = document.getElementById("levelInput");
+    if (element.value < element.min) {
+        element.value = element.min;
     }
-    if (document.getElementById("levelInput").value < document.getElementById("levelInput").min) {
-        document.getElementById("levelInput").value = document.getElementById("levelInput").min;
+    if (element.value > element.max) {
+        element.value = element.max;
     }
 })
 
 // ensure that level split range and number inputs are in the range (0 <= x <= 100)
 document.getElementById("levelInputNumber").addEventListener("change", function() {
-    if (document.getElementById("levelInputNumber").value < 0) {
-        document.getElementById("levelInputNumber").value = 0;
+    const element = document.getElementById("levelInputNumber");
+    if (element.value < element.min) {
+        element.value = element.min;
     }
-    if (document.getElementById("levelInputNumber").value > 100) {
-        document.getElementById("levelInputNumber").value = 100;
+    if (element.value > element.max) {
+        element.value = element.max;
     }
 })
 
@@ -88,10 +90,12 @@ document.getElementById("toggleInstructions").addEventListener("change", functio
 // update the maximum value for level input based on the initial stats of the player
 $(".initialStats").on("change", function() {
     let sum = 0;
-    sum += parseInt(document.getElementById("skillDamageOne").value) + parseInt(document.getElementById("skillMiscOne").value);
-    sum += parseInt(document.getElementById("skillDamageTwo").value) + parseInt(document.getElementById("skillMiscTwo").value);
-    sum += parseInt(document.getElementById("skillDamageThree").value) + parseInt(document.getElementById("skillMiscThree").value);
-    sum += parseInt(document.getElementById("skillDamageFour").value) + parseInt(document.getElementById("skillMiscFour").value);
+    $('input.initialStats').each(function() {
+        const maxValue = $(this).val();
+        if (maxValue) {
+            sum += parseInt(maxValue);
+        }
+    });
     const maxLevel = 99*8 - sum;
     document.getElementById("levelInput").max = maxLevel;
 })
