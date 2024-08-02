@@ -107,7 +107,7 @@
                 <label for="damageSkillInput">Damaging Skills</label>
             </td>
             <td>
-                <input type="number" id="damageSkillInput" min="0" max="713" step="1" value="0" readonly></input>
+                <input type="number" id="damageSkillInput" min="0" max="713" step="1" value="0" ></input>
             </td>
         </tr>
         <tr>
@@ -115,18 +115,26 @@
                 <label for="miscSkillInput">Misc Skills</label>
             </td>
             <td>
-                <input type="number" id="miscSkillInput" min="0" max="713" step="1" value="0" readonly></input>
+                <input type="number" id="miscSkillInput" min="0" max="713" step="1" value="0" ></input>
             </td>
         </tr>
     </table>
-    <label for="levelInputRange">Show split between damaging skills and other skills</label>
-    <table style="width: 25%;">
+    <label for="levelInputRange"><b>Split between levelling use</b></label>
+    <table style="width: 35%;">
         <tr>
             <td>
-                <input type="range" id="levelInputRange" min="0" max="100" step="1" value="50"></input>
+                Slider Input
             </td>
             <td>
-                <input type="number" id="levelInputNumber" min="0" max="100" step="1" value="50"></input>
+                <center>Misc<input type="range" id="levelInputRange" min="0" max="100" step="1" value="50"></input>Damage</center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Exact Input
+            </td>
+            <td>
+               <input style="margin-left: 20%;" type="number" id="levelInputNumber" min="0" max="100" step="1" value="50"></input>%
             </td>
         </tr>
     </table>

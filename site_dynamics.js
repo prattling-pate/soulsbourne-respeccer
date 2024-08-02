@@ -39,7 +39,19 @@ const updateLevels = function() {
     document.getElementById("miscSkillInput").value = nonDamagingSkillsPoints.toString();
 }
 
+const updateSplit = function() {
+    const damagingSkillsPoints = parseInt(document.getElementById("damageSkillInput").value);
+    const nonDamagingSkillsPoints = parseInt(document.getElementById("miscSkillInput").value);
+    const totalLevels = damagingSkillsPoints + nonDamagingSkillsPoints;
+    const damagingSkillsPercentage = Math.round(damagingSkillsPoints * 100 / totalLevels);
+    document.getElementById("levelInput").value = totalLevels.toString();
+    document.getElementById("levelInputRange").value = damagingSkillsPercentage.toString();
+    document.getElementById("levelInputNumber").value = damagingSkillsPercentage.toString();
+}
+
 // calculate the split levels on the fly
 document.getElementById("levelInput").addEventListener("input", updateLevels)
 document.getElementById("levelInputRange").addEventListener("input", updateLevels)
 document.getElementById("levelInputNumber").addEventListener("input", updateLevels)
+document.getElementById("damageSkillInput").addEventListener("input", updateSplit)
+document.getElementById("miscSkillInput").addEventListener("input", updateSplit)
