@@ -101,7 +101,8 @@
     </table>
     <label for="levelInputRange">Show split between damaging skills and other skills</label>
     <br>
-    <input type="range" id="levelInputRange"></input>
+    <input class="levelInput" type="range" id="levelInputRange"></input>
+    <input class="levelInput" type="number" id="levelInputNumber" value="50" min="1" max="100"></input>%
     <h2>Weapon Properties</h2>
     <p>Input damage scaling (letter grades), stat requirements to wield them and their base damages (physical and magical) to find the optimal stats to maximise damage output.</p>
     <p>For damage scaling, input the letter grade (S, A, B, C, D, E) or "-" if the weapon does not scale with that stat.</p>
@@ -307,7 +308,7 @@
       </tr>
     </table>
     <br>
-    <script src="jquery.js"></script>
+    <script src="site_dynamics.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
