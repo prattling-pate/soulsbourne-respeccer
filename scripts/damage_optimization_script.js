@@ -76,7 +76,7 @@ function maximiseDamage(weapon, defaultSkills, levels, floats=false) {
 }
 
 function getNumberFromElement(elementId) {
-    const number = parseInt(document.getElementById(elementId).value);
+    const number = parseInt($("#" + elementId).val());
     if (isNaN(number)) throw new Error("Please enter a valid number.");
     return number;
 }
@@ -95,7 +95,7 @@ function getLevels() {
 }
 
 function getWeapon() {
-    let gradeType = document.getElementById("scaleType").value;
+    let gradeType = $("scaleType").val();
     let grades = [document.getElementById("skillDamageOneGrade").value,
         document.getElementById("skillDamageTwoGrade").value,
         document.getElementById("skillDamageThreeGrade").value,
@@ -125,7 +125,7 @@ function setOutputSkills(solution) {
     document.getElementById("skillDamageFourOutput").value = solution[3];
 }
 
-document.getElementById("respecButton").onclick = () => {
+$("#respecButton").on("click", function() {
     try {
         let defaultSkills = getDefaultSkills();
         let levels = getLevels();
@@ -138,4 +138,4 @@ document.getElementById("respecButton").onclick = () => {
         return;
     }
     setOutputSkills(solution);
-}
+})
