@@ -75,17 +75,23 @@ function maximiseDamage(weapon, defaultSkills, levels, floats=false) {
     return x;
 }
 
+function getValueListFromDivClass(className, asNumber) {
+    let list = [];
+    $("." + className).each(function() {
+        if (asNumber) list.push(Number($(this).val()));
+        else list.push($(this).val());
+    })
+    return list;
+}
+
 function getNumberFromElement(elementId) {
-    const number = parseInt($("#" + elementId).val());
+    const number = Number($("#" + elementId).val());
     if (isNaN(number)) throw new Error("Please enter a valid number.");
     return number;
 }
 
 function getDefaultSkills() {
-    const defaultSkills = [getNumberFromElement("skillDamageOne"),
-        getNumberFromElement("skillDamageTwo"),
-        getNumberFromElement("skillDamageThree"),
-        getNumberFromElement("skillDamageFour")];
+    const defaultSkills = getValueListFromDivClass("initialStats.damage", asNumber=true); 
     return defaultSkills;
 }
 
@@ -94,24 +100,21 @@ function getLevels() {
     return levels;
 }
 
-function getWeapon() {
-    let gradeType = $("scaleType").val();
-    let grades = [document.getElementById("skillDamageOneGrade").value,
-        document.getElementById("skillDamageTwoGrade").value,
-        document.getElementById("skillDamageThreeGrade").value,
-        document.getElementById("skillDamageFourGrade").value];
+function getGrades(gradeType) {
+    let grades = [];
     if (gradeType === "float") {
-        grades = [parseFloat(document.getElementById("skillDamageOneGradeFloat").value),
-        parseFloat(document.getElementById("skillDamageTwoGradeFloat").value),
-        parseFloat(document.getElementById("skillDamageThreeGradeFloat").value),
-        parseFloat(document.getElementById("skillDamageFourGradeFloat").value)];
+        grades = getValueListFromDivClass("grades", asNumber=true);
     }
+    else {
+        grades = getValueListFromDivClass("grades", asNumber=false);
+    }
+    return grades;
+}
+
+function getWeapon() {
     const weapon = {
-        grades : grades,
-        requirements : [getNumberFromElement("skillDamageOneRequirement"),
-            getNumberFromElement("skillDamageTwoRequirement"),
-            getNumberFromElement("skillDamageThreeRequirement"),
-            getNumberFromElement("skillDamageFourRequirement")],
+        grades : getGrades($("#scaleType").val()),
+        requirements : getValueListFromDivClass("requirements", asNumber=true),
         physicalDamage : getNumberFromElement("physicalDamage"),
         magicDamage : getNumberFromElement("magicDamage")
     };
@@ -119,10 +122,9 @@ function getWeapon() {
 }
 
 function setOutputSkills(solution) {
-    document.getElementById("skillDamageOneOutput").value = solution[0];
-    document.getElementById("skillDamageTwoOutput").value = solution[1];
-    document.getElementById("skillDamageThreeOutput").value = solution[2];
-    document.getElementById("skillDamageFourOutput").value = solution[3];
+    $(".output.damage").each(function() {
+        $(this).val(solution.shift());
+    })
 }
 
 $("#respecButton").on("click", function() {
@@ -130,7 +132,7 @@ $("#respecButton").on("click", function() {
         let defaultSkills = getDefaultSkills();
         let levels = getLevels();
         let weapon = getWeapon();
-        const float = document.getElementById("scaleType").value === "float";
+        const float = $("#scaleType").val() === "float";
         var solution = maximiseDamage(weapon, defaultSkills, levels, float);
     }
     catch (error) {

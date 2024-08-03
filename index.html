@@ -24,7 +24,7 @@
             <label for="skillMiscOne">Vitality</label>
         </td>
         <td>
-            <input class="initialStats" type="number" id="skillMiscOne" min="1" max="99" step="1" value="10"></input>
+            <input class="initialStats misc" type="number" id="skillMiscOne" min="1" max="99" step="1" value="10"></input>
         </td>
       </tr>
       <tr>
@@ -33,7 +33,7 @@
             <label for="skillMiscTwo">Attunement</label>
         </td>
         <td>
-            <input class="initialStats" type="number" id="skillMiscTwo" min="1" max="99" step="1" value="10"></input>
+            <input class="initialStats misc" type="number" id="skillMiscTwo" min="1" max="99" step="1" value="10"></input>
         </td>
       </tr>
       <tr>
@@ -42,7 +42,7 @@
             <label for="skillMiscThree">Endurance</label>
         </td>
         <td>
-            <input class="initialStats" type="number" id="skillMiscThree" min="1" max="99" step="1" value="10"></input>
+            <input class="initialStats misc" type="number" id="skillMiscThree" min="1" max="99" step="1" value="10"></input>
         </td>
       </tr>
       <tr>
@@ -51,7 +51,7 @@
             <label for="skillDamageOne">Strength</label>
         </td>
         <td>
-            <input class="initialStats" type="number" id="skillDamageOne" min="1" max="99" step="1" value="10"></input>
+            <input class="initialStats damage" type="number" id="skillDamageOne" min="1" max="99" step="1" value="10"></input>
         </td>
       </tr>
       <tr>
@@ -60,7 +60,7 @@
             <label for="skillDamageTwo">Dexterity</label>
         </td>
         <td>
-            <input class="initialStats" type="number" id="skillDamageTwo" min="1" max="99" step="1" value="10"></input>   
+            <input class="initialStats damage" type="number" id="skillDamageTwo" min="1" max="99" step="1" value="10"></input>   
         </td>
       </tr>
       <tr>
@@ -69,7 +69,7 @@
             <label for="skillDamageThree">Intelligence</label>
         </td>
         <td>
-            <input class="initialStats" type="number" id="skillDamageThree" min="1" max="99" step="1" value="10"></input>    
+            <input class="initialStats damage" type="number" id="skillDamageThree" min="1" max="99" step="1" value="10"></input>    
         </td>
       </tr>
       <tr>
@@ -78,7 +78,7 @@
         <label for="skillMiscFour">Resistance</label>
       </td>
       <td>
-        <input class="initialStats" type="number" id="skillMiscFour" min="1" max="99" step="1" value="10"></input>
+        <input class="initialStats misc" type="number" id="skillMiscFour" min="1" max="99" step="1" value="10"></input>
       </td>
       </tr>
       <tr>
@@ -87,7 +87,7 @@
             <label for="skillDamageFour">Faith</label>
         </td>
         <td>
-            <input class="initialStats" type="number" id="skillDamageFour" min="1" max="99" step="1" value="10"></input>
+            <input class="initialStats damage" type="number" id="skillDamageFour" min="1" max="99" step="1" value="10"></input>
         </td>
       </tr>
       <tr>
@@ -258,7 +258,7 @@
                 <input class="floats" type="number" id="skillDamageOneGradeFloat" min="0" max="2" value="0" step="0.01" hidden></input>
             </td>
             <td>
-                <input type="number" id="skillDamageOneRequirement" min="1" max="99" step="1" value="10"></input>
+                <input class="requirements" type="number" id="skillDamageOneRequirement" min="1" max="99" step="1" value="10"></input>
             </td>
         </tr>
         <tr>
@@ -279,7 +279,7 @@
                 <input class="floats" type="number" id="skillDamageTwoGradeFloat" min="0" max="2" value="0" step="0.01" hidden></input>
             </td>
             <td>
-                <input type="number" id="skillDamageTwoRequirement" min="1" max="99" step="1" value="10"></input>   
+                <input class="requirements" type="number" id="skillDamageTwoRequirement" min="1" max="99" step="1" value="10"></input>   
             </td>
         </tr>
         <tr>
@@ -300,7 +300,7 @@
                 <input class="floats" type="number" id="skillDamageThreeGradeFloat" min="0" max="2" value="0" step="0.01" hidden></input>
             </td>
             <td>
-                <input type="number" id="skillDamageThreeRequirement" min="1" max="99" step="1" value="10"></input>    
+                <input class="requirements" type="number" id="skillDamageThreeRequirement" min="1" max="99" step="1" value="10"></input>    
             </td>
         </tr>
         <tr>
@@ -321,7 +321,7 @@
                 <input class="floats" type="number" id="skillDamageFourGradeFloat" min="0" max="2" value="0" step="0.01" hidden></input>
             </td>
             <td>
-                <input type="number" id="skillDamageFourRequirement" min="1" max="99" step="1" value="10"></input>
+                <input class="requirements" type="number" id="skillDamageFourRequirement" min="1" max="99" step="1" value="10"></input>
             </td>
         </tr>
     </table>
@@ -359,7 +359,7 @@
             <label for="skillMiscOneOutput">Vitality</label>
         </td>
         <td>
-            <input type="number" id="skillMiscOneOutput" min="1" max="99" step="1" value="10" readonly></input>
+            <input class="output misc" type="number" id="skillMiscOneOutput" min="1" max="99" step="1" value="10" readonly></input>
         </td>
       </tr>
       <tr>
@@ -368,7 +368,7 @@
             <label for="skillMiscTwoOutput">Attunement</label>
         </td>
         <td>
-            <input type="number" id="skillMiscTwoOutput" min="1" max="99" step="1" value="10" readonly></input>
+            <input class="output misc" type="number" id="skillMiscTwoOutput" min="1" max="99" step="1" value="10" readonly></input>
         </td>
       </tr>
       <tr>
@@ -377,7 +377,7 @@
             <label for="skillMiscThreeOutput">Endurance</label>
         </td>
         <td>
-            <input type="number" id="skillMiscThreeOutput" min="1" max="99" step="1" value="10" readonly></input>
+            <input class="output misc" type="number" id="skillMiscThreeOutput" min="1" max="99" step="1" value="10" readonly></input>
         </td>
       </tr>
       <tr>
@@ -386,7 +386,7 @@
             <label for="skillDamageOneOutput">Strength</label>
         </td>
         <td>
-            <input type="number" id="skillDamageOneOutput" min="1" max="99" step="1" value="10" readonly></input>
+            <input class="output damage" type="number" id="skillDamageOneOutput" min="1" max="99" step="1" value="10" readonly></input>
         </td>
       </tr>
       <tr>
@@ -395,7 +395,7 @@
             <label for="skillDamageTwoOutput">Dexterity</label>
         </td>
         <td>
-            <input type="number" id="skillDamageTwoOutput" min="1" max="99" step="1" value="10" readonly></input>   
+            <input class="output damage" type="number" id="skillDamageTwoOutput" min="1" max="99" step="1" value="10" readonly></input>   
         </td>
       </tr>
       <tr>
@@ -404,7 +404,7 @@
             <label for="skillDamageThreeOutput">Intelligence</label>
         </td>
         <td>
-            <input type="number" id="skillDamageThreeOutput" min="1" max="99" step="1" value="10" readonly></input>    
+            <input class="output damage" type="number" id="skillDamageThreeOutput" min="1" max="99" step="1" value="10" readonly></input>    
         </td>
       </tr>
       <tr>
@@ -413,7 +413,7 @@
         <label for="skillMiscFourOutput">Resistance</label>
       </td>
       <td>
-        <input type="number" id="skillMiscFourOutput" min="1" max="99" step="1" value="10" readonly></input>
+        <input class="output misc" type="number" id="skillMiscFourOutput" min="1" max="99" step="1" value="10" readonly></input>
       </td>
       </tr>
       <tr>
@@ -422,7 +422,7 @@
             <label for="skillDamageFourOutput">Faith</label>
         </td>
         <td>
-            <input type="number" id="skillDamageFourOutput" min="1" max="99" step="1" value="10" readonly></input>
+            <input class="output damage" type="number" id="skillDamageFourOutput" min="1" max="99" step="1" value="10" readonly></input>
         </td>
       </tr>
     </table>

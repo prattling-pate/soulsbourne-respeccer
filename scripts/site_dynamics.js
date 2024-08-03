@@ -12,7 +12,7 @@ document.getElementById("scaleType").addEventListener("change", function() {
 })
 
 // These event listeners form a two-way binding between the range and number input fields for the level input
-document.getElementById("levelInputRange").addEventListener("change", function() {
+document.getElementById("levelInputRange").addEventListener("input", function() {
     document.getElementById("levelInputNumber").value = document.getElementById("levelInputRange").value;
 })
 
@@ -42,35 +42,35 @@ document.getElementById("levelInputNumber").addEventListener("change", function(
 })
 
 const updateLevels = function() {
-    const totalLevels = parseInt(document.getElementById("levelInput").value);
-    const damagingSkillsPercentage = Math.round(parseFloat(document.getElementById("levelInputRange").value));
+    const totalLevels = getNumberFromElement("levelInput");
+    const damagingSkillsPercentage = Math.round(getNumberFromElement("levelInputRange"));
     const damagingSkillsPoints = Math.round(totalLevels * damagingSkillsPercentage / 100);
     const nonDamagingSkillsPoints = totalLevels - damagingSkillsPoints;
-    document.getElementById("damageSkillInput").value = damagingSkillsPoints.toString();
-    document.getElementById("miscSkillInput").value = nonDamagingSkillsPoints.toString();
+    $("#damageSkillInput").val(damagingSkillsPoints.toString());
+    $("#miscSkillInput").val(nonDamagingSkillsPoints.toString());
 }
 
 const updateSplit = function() {
-    const damagingSkillsPoints = parseInt(document.getElementById("damageSkillInput").value);
-    const nonDamagingSkillsPoints = parseInt(document.getElementById("miscSkillInput").value);
+    const damagingSkillsPoints = getNumberFromElement("damageSkillInput");
+    const nonDamagingSkillsPoints = getNumberFromElement("miscSkillInput");
     const totalLevels = damagingSkillsPoints + nonDamagingSkillsPoints;
     const damagingSkillsPercentage = Math.round(damagingSkillsPoints * 100 / totalLevels);
-    document.getElementById("levelInput").value = totalLevels.toString();
-    document.getElementById("levelInputRange").value = damagingSkillsPercentage.toString();
-    document.getElementById("levelInputNumber").value = damagingSkillsPercentage.toString();
+    $("#levelInput").val(totalLevels.toString());
+    $("#levelInputRange").val(damagingSkillsPercentage.toString());
+    $("#levelInputNumber").val(damagingSkillsPercentage.toString());
 }
 
 // calculate the split levels on the fly
-document.getElementById("levelInput").addEventListener("change", updateLevels)
-document.getElementById("levelInputRange").addEventListener("change", updateLevels)
-document.getElementById("levelInputNumber").addEventListener("change", updateLevels)
-document.getElementById("damageSkillInput").addEventListener("change", updateSplit)
-document.getElementById("miscSkillInput").addEventListener("change", updateSplit)
+$("#levelInput").on("change", updateLevels)
+$("#levelInputRange").on("input", updateLevels)
+$("#levelInputNumber").on("change", updateLevels)
+$("#damageSkillInput").on("change", updateSplit)
+$("#miscSkillInput").on("change", updateSplit)
 
 
 // hide/show the basic skill ranking based on toggle checkbox
-document.getElementById("toggleBasicRespec").addEventListener("change", function() {
-    if (document.getElementById("toggleBasicRespec").checked) {
+$("#toggleBasicRespec").on("change", function() {
+    if ($("#toggleBasicRespec").prop("checked")) {
         $(".basicSkills").show();
     }
     else {
@@ -78,8 +78,8 @@ document.getElementById("toggleBasicRespec").addEventListener("change", function
     }
 })
 
-document.getElementById("toggleInstructions").addEventListener("change", function() {
-    if (document.getElementById("toggleInstructions").checked) {
+$("#toggleInstructions").on("change", function() {
+    if ($("#toggleInstructions").prop("checked")) {
         $(".instructions").show();
     }
     else {
@@ -97,5 +97,5 @@ $(".initialStats").on("change", function() {
         }
     });
     const maxLevel = 99*8 - sum;
-    document.getElementById("levelInput").max = maxLevel;
+    $("#levelInput").attr("max", maxLevel);
 })

@@ -2,7 +2,22 @@
     height: 0.9em;
 }
 
+.output{
+}
+
+.output.misc{
+}
+
+.output.damage{
+}
+
 .initialStats{
+}
+
+.initialStats.misc{
+}
+
+.initialStats.damage{
 }
 
 input[type="range"] {
@@ -13,6 +28,9 @@ input[type="range"] {
 }
 
 .miscSkillRank{
+}
+
+.requirements{
 }
 
 .grades {
