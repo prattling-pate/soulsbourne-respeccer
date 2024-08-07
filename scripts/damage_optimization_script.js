@@ -2,8 +2,8 @@
     * Function which returns the gradient of the piece-wise function
     * encoding "soft caps" on skills provided (skillPoints)on the soft 
     * cap splits provided (softCapLocations).
-    * @param {Number[]} skillPoints  
-    * @param {Number[]} softCapLocations     
+    * @param {Number[]} skillPoints - The current skill points in each skill.
+    * @param {Number[]} softCapLocations - The skill points at which the soft caps occur.
 */
 function getSoftCapGradient(skillPoints, softCapLocations) {
     if (skillPoints >= 99) return 0;
@@ -15,7 +15,7 @@ function getSoftCapGradient(skillPoints, softCapLocations) {
 /**
     * Function which translates the user inputted scaling grades into
     * workable float values.
-    * @param {String[]} grades
+    * @param {String[]} grades - The weapon scaling grades.
 */
 function convertLetterGradesToFloat(grades) {
     let gradesToFloats = {"S": 1.7, "A": 1.195, "B": 0.87, "C": 0.62, "D": 0.37, "E": 0.125, "F": 0};
@@ -28,9 +28,10 @@ function convertLetterGradesToFloat(grades) {
 /**
     * Returns the index of the skill with the greatest partial 
     * derivative of the damage output function.
-    * @param {Object} weapon 
-    * @param {Boolean} floats 
-    * @param {Array[Number] skillPoints 
+    * @param {Object} weapon - Weapon properties encoded into js object
+    * @param {Boolean} floats - Determines if weapon scaling is already floats or stuck as grades.
+    * @param {Array[Number]} skillPoints - The current skill points in each skill.
+    * @param {Boolean} magic - Determines if the weapon is a 'magical' affinity.
 */
 function getGreatestChangeSkill(weapon, floats, skillPoints, magic) {
     let damageRatings = [...weapon.grades];
@@ -58,10 +59,10 @@ function getGreatestChangeSkill(weapon, floats, skillPoints, magic) {
 
 /**
     * Returns the vector of skills which optimal damage.
-    * @param {Object} weapon
-    * @param {Number} levels 
-    * @param {Array[Number]} defaultSkills 
-    * @param {boolean} [floats=false] 
+    * @param {Object} weapon - Weapon properties encoded into js object
+    * @param {Number} levels - The total number of levels to distribute.
+    * @param {Array[Number]} defaultSkills - The initial skill points in each skill.
+    * @param {boolean} [floats=false] - Determines if weapon scaling is already floats or stuck as grades.
 */
 function maximiseDamage(weapon, defaultSkills, levels, floats=false) {
     let x = [...defaultSkills];

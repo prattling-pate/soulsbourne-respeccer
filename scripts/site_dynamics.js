@@ -1,6 +1,6 @@
 // This event listener is used to show/hide the grades or floats input fields based on the selected scale type
-document.getElementById("scaleType").addEventListener("change", function() {
-    const scaleType = document.getElementById("scaleType").value;
+$("#scaleType").on("change", function() {
+    const scaleType = $("#scaleType").val();
     if (scaleType === "grades") {
         $(".grades").show();
         $(".floats").hide();
@@ -12,32 +12,32 @@ document.getElementById("scaleType").addEventListener("change", function() {
 })
 
 // These event listeners form a two-way binding between the range and number input fields for the level input
-document.getElementById("levelInputRange").addEventListener("input", function() {
-    document.getElementById("levelInputNumber").value = document.getElementById("levelInputRange").value;
+$("#levelInputRange").on("input", function() {
+    $("#levelInputNumber").val($("#levelInputRange").val());
 })
 
-document.getElementById("levelInputNumber").addEventListener("change", function() {
-    document.getElementById("levelInputRange").value = document.getElementById("levelInputNumber").value;
+$("#levelInputNumber").on("change", function() {
+    $("#levelInputRange").val($("#levelInputNumber").val());
 })
 
-document.getElementById("levelInput").addEventListener("change", function() {
-    const element = document.getElementById("levelInput");
-    if (element.value < element.min) {
-        element.value = element.min;
+$("#levelInput").on("change", function() {
+    const element = $("#levelInput");
+    if (element.val() < element.attr('min')) {
+        element.val(element.min);
     }
-    if (element.value > element.max) {
-        element.value = element.max;
+    if (element.val() > element.atrr('max')) {
+        element.val(element.attr('max'));
     }
 })
 
 // ensure that level split range and number inputs are in the range (0 <= x <= 100)
-document.getElementById("levelInputNumber").addEventListener("change", function() {
-    const element = document.getElementById("levelInputNumber");
-    if (element.value < element.min) {
-        element.value = element.min;
+$("#levelInputNumber").on("change", function() {
+    const element = $("#levelInputNumber");
+    if (element.val() < element.atrr('min')) {
+        element.val() = element.atrr('min');
     }
-    if (element.value > element.max) {
-        element.value = element.max;
+    if (element.val() > element.attr('max')) {
+        element.val() = element.attr('max');
     }
 })
 
@@ -87,7 +87,7 @@ $("#toggleInstructions").on("change", function() {
     }
 })
 
-// update the maximum value for level input based on the initial stats of the player
+// update the maximum val() for level input based on the initial stats of the player
 $(".initialStats").on("change", function() {
     let sum = 0;
     $('input.initialStats').each(function() {
