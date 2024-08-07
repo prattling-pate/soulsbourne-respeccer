@@ -45,12 +45,12 @@ $("#levelInputNumber").on("change", function() {
 const updateLevels = function() {
     if ($(this).attr('id') === "levelInputDamageNumber") {
         const temp = 100 - Number($(this).val());
-        $("#levelInputRange").val(temp.toString());
-        $("#levelInputBasicNumber").val($(this).val());
+        $("#levelInputRange").val(temp);
+        $("#levelInputBasicNumber").val(temp);
     }
     else if ($(this).attr('id') === "levelInputBasicNumber") {
         $("#levelInputRange").val($(this).val());
-        $("#levelInputDamageNumber").val($(this).val());
+        $("#levelInputDamageNumber").val(100 - Number($(this).val()));
     }
     const totalLevels = getNumberFromElement("levelInput");
     const damagingSkillsPercentage = Math.round(getNumberFromElement("levelInputRange"));
