@@ -32,18 +32,24 @@ function convertLetterGradesToFloat(grades) {
     * @param {Boolean} floats 
     * @param {Array[Number] skillPoints 
 */
-function getGreatestChangeSkill(weapon, floats, skillPoints) {
+function getGreatestChangeSkill(weapon, floats, skillPoints, magic) {
     let damageRatings = [...weapon.grades];
     if (!floats) damageRatings = convertLetterGradesToFloat(damageRatings)
     let maxI = 0;
+    const softCaps = [1,10,20,40,99]
+    // soft caps of weapon changes based on whether it is a 'magical' affinity
+    if (magic) {
+        softCaps[2] = 30;
+        softCaps[3] = 50;
+    }
     for (let i=0; i < damageRatings.length; i++) {
         if (i<2) {
             damageRatings[i] *= getSoftCapGradient(skillPoints[i],
-                [1, 10, 20, 40, 99]) * weapon.physicalDamage;
+                softCaps) * weapon.physicalDamage;
         }
         else {
             damageRatings[i] *= getSoftCapGradient(skillPoints[i],
-                [1, 10, 30, 50, 99]) * weapon.magicDamage;
+                softCaps) * weapon.magicDamage;
         }
         if (damageRatings[i] > damageRatings[maxI] || skillPoints[maxI] >= 99) maxI = i;
     }
@@ -67,8 +73,9 @@ function maximiseDamage(weapon, defaultSkills, levels, floats=false) {
         }
     }
     if (levels < 0) throw new Error("Build is not feasible!");
+    const isMagic = $("#toggleMagic").prop('checked');
     while (levels > 0) {
-        let skill = getGreatestChangeSkill(weapon, floats, x);
+        let skill = getGreatestChangeSkill(weapon, floats, x, isMagic);
         x[skill]++;
         levels--;
     }

@@ -16,11 +16,25 @@ function sum(list) {
     return list.reduce((a, b) => a + b, 0);
 }
 
+function getGreatestChangeBasicSkill(basicSkillsScale, solution) {
+    let maxI = 0;
+    let basicSkillRating = [...basicSkillsScale];
+    // matrix of soft caps is used as each basic skills' soft cap
+    // is different
+    const softCaps = [[1,30,50,99], [1,50,99],[1,40,99],[1,15,30,99]];
+    for (let i=0; i < basicSkillsScale.length; i++) {
+        basicSkillRating[i] *= getSoftCapGradient(solution[i], softCaps[i]);
+        if (basicSkillRating[i] > basicSkillRating[maxI] || solution[maxI] >= 99) maxI = i;
+    }
+    return maxI;
+}
+
 function assignBasicSkills(defaultSkillPoints, basicSkillsScale, levels) {
     let solution = [...defaultSkillPoints];
-    const total = sum(basicSkillsScale);
-    for (let i=0; i<solution.length; i++) {
-        solution[i] += Math.round(basicSkillsScale[i] / total * levels);
+    while (levels > 0) {
+        const skill = getGreatestChangeBasicSkill(basicSkillsScale, solution)
+        solution[skill]++;
+        levels--;
     }
     return solution;
 }
