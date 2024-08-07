@@ -13,10 +13,11 @@ $("#scaleType").on("change", function() {
 
 // These event listeners form a two-way binding between the range and number input fields for the level input
 $("#levelInputRange").on("input", function() {
-    $("#levelInputNumber").val($("#levelInputRange").val());
+    $("#levelInputDamageNumber").val($("#levelInputRange").val());
+    $("#levelInputBasicNumber").val((100 - Number($("#levelInputRange").val())).toString());
 })
 
-$("#levelInputNumber").on("change", function() {
+$("#levelInputDamageNumber").on("change", function() {
     $("#levelInputRange").val($("#levelInputNumber").val());
 })
 
@@ -25,7 +26,7 @@ $("#levelInput").on("change", function() {
     if (element.val() < element.attr('min')) {
         element.val(element.min);
     }
-    if (element.val() > element.atrr('max')) {
+    if (element.val() > element.attr('max')) {
         element.val(element.attr('max'));
     }
 })
@@ -33,8 +34,8 @@ $("#levelInput").on("change", function() {
 // ensure that level split range and number inputs are in the range (0 <= x <= 100)
 $("#levelInputNumber").on("change", function() {
     const element = $("#levelInputNumber");
-    if (element.val() < element.atrr('min')) {
-        element.val() = element.atrr('min');
+    if (element.val() < element.attr('min')) {
+        element.val() = element.attr('min');
     }
     if (element.val() > element.attr('max')) {
         element.val() = element.attr('max');
@@ -42,6 +43,15 @@ $("#levelInputNumber").on("change", function() {
 })
 
 const updateLevels = function() {
+    if ($(this).attr('id') === "levelInputDamageNumber") {
+        const temp = 100 - Number($(this).val());
+        $("#levelInputRange").val(temp.toString());
+        $("#levelInputBasicNumber").val($(this).val());
+    }
+    else if ($(this).attr('id') === "levelInputBasicNumber") {
+        $("#levelInputRange").val($(this).val());
+        $("#levelInputDamageNumber").val($(this).val());
+    }
     const totalLevels = getNumberFromElement("levelInput");
     const damagingSkillsPercentage = Math.round(getNumberFromElement("levelInputRange"));
     const damagingSkillsPoints = Math.round(totalLevels * damagingSkillsPercentage / 100);
@@ -57,16 +67,17 @@ const updateSplit = function() {
     const damagingSkillsPercentage = Math.round(damagingSkillsPoints * 100 / totalLevels);
     $("#levelInput").val(totalLevels.toString());
     $("#levelInputRange").val(damagingSkillsPercentage.toString());
-    $("#levelInputNumber").val(damagingSkillsPercentage.toString());
+    $("#levelInputDamageNumber").val(damagingSkillsPercentage.toString());
+    $("#levelInputBasicNumber").val((100 - damagingSkillsPercentage).toString());
 }
 
 // calculate the split levels on the fly
 $("#levelInput").on("change", updateLevels)
 $("#levelInputRange").on("input", updateLevels)
-$("#levelInputNumber").on("change", updateLevels)
+$("#levelInputDamageNumber").on("change", updateLevels);
+$("#levelInputBasicNumber").on("change", updateLevels);
 $("#damageSkillInput").on("change", updateSplit)
 $("#miscSkillInput").on("change", updateSplit)
-
 
 // hide/show the basic skill ranking based on toggle checkbox
 $("#toggleBasicRespec").on("change", function() {

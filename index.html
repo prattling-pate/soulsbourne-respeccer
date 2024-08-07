@@ -120,7 +120,7 @@
         </tr>
     </table>
     <label for="levelInputRange"><b>Split between levelling use</b></label>
-    <table style="width: 35%;">
+    <table style="width: 40%;">
         <tr>
             <td>
                 Slider Input
@@ -133,8 +133,11 @@
             <td>
                 Exact Input
             </td>
-            <td>
-               <input style="margin-left: 20%;" type="number" id="levelInputNumber" min="0" max="100" step="1" value="50"></input>%
+            <td><center>
+                Basic
+                <input type="number" id="levelInputBasicNumber" min="0" max="100" step="1" value="50">/
+                <input type="number" id="levelInputDamageNumber" min="0" max="100" step="1" value="50">%
+                Damage</center>
             </td>
         </tr>
     </table>
@@ -156,7 +159,7 @@
                 <label for="skillMiscOneRank">Vitality</label>
             </td>
             <td>
-                <select class="skillMiscRank" id="skillMiscOneRank">
+                <select class="skillMiscRank">
                     <option value="F">-</option>
                     <option value="S">S</option>
                     <option value="A">A</option>
@@ -173,7 +176,7 @@
                 <label for="skillMiscTwoRank">Attunement</label>
             </td>
             <td>
-                <select class="skillMiscRank" id="skillMiscTwoRank">
+                <select class="skillMiscRank">
                     <option value="F">-</option>
                     <option value="S">S</option>
                     <option value="A">A</option>
@@ -190,7 +193,7 @@
                 <label for="skillMiscThreeRank">Endurance</label>
             </td>
             <td> 
-                <select class="skillMiscRank" id="skillMiscThreeRank">
+                <select class="skillMiscRank">
                     <option value="F">-</option>
                     <option value="S">S</option>
                     <option value="A">A</option>
@@ -208,7 +211,7 @@
                 <label for="skillMiscFourRank">Resistance</label>
             </td> 
             <td>
-                <select class="skillMiscRank" id="skillMiscFourRank">
+                <select class="skillMiscRank">
                     <option value="F">-</option>
                     <option value="S">S</option>
                     <option value="A">A</option>
@@ -246,7 +249,7 @@
                 <label for="skillDamageOne">Strength</label>
             </td>
             <td>
-                <select class="grades" id="skillDamageOneGrade">
+                <select class="grades">
                     <option value="F">-</option>
                     <option value="S">S</option>
                     <option value="A">A</option>
@@ -255,10 +258,10 @@
                     <option value="D">D</option>
                     <option value="E">E</option>
                 </select>
-                <input class="floats" type="number" id="skillDamageOneGradeFloat" min="0" max="2" value="0" step="0.01" hidden></input>
+                <input class="floats" type="number" min="0" max="2" value="0" step="0.01" hidden></input>
             </td>
             <td>
-                <input class="requirements" type="number" id="skillDamageOneRequirement" min="1" max="99" step="1" value="10"></input>
+                <input class="requirements" type="number" min="1" max="99" step="1" value="10"></input>
             </td>
         </tr>
         <tr>
@@ -267,7 +270,7 @@
                 <label for="skillDamageTwo">Dexterity</label>
             </td>
             <td>
-                <select class="grades" id="skillDamageTwoGrade">
+                <select class="grades">
                     <option value="F">-</option>
                     <option value="S">S</option>
                     <option value="A">A</option>
@@ -276,10 +279,10 @@
                     <option value="D">D</option>
                     <option value="E">E</option>
                 </select>
-                <input class="floats" type="number" id="skillDamageTwoGradeFloat" min="0" max="2" value="0" step="0.01" hidden></input>
+                <input class="floats" type="number" min="0" max="2" value="0" step="0.01" hidden></input>
             </td>
             <td>
-                <input class="requirements" type="number" id="skillDamageTwoRequirement" min="1" max="99" step="1" value="10"></input>   
+                <input class="requirements" type="number" min="1" max="99" step="1" value="10"></input>   
             </td>
         </tr>
         <tr>
@@ -288,7 +291,7 @@
                 <label for="skillDamageThree">Intelligence</label>
             </td>
             <td>
-                <select class="grades" id="skillDamageThreeGrade">
+                <select class="grades">
                     <option value="F">-</option>
                     <option value="S">S</option>
                     <option value="A">A</option>
@@ -297,10 +300,10 @@
                     <option value="D">D</option>
                     <option value="E">E</option>
                 </select>
-                <input class="floats" type="number" id="skillDamageThreeGradeFloat" min="0" max="2" value="0" step="0.01" hidden></input>
+                <input class="floats" type="number" min="0" max="2" value="0" step="0.01" hidden></input>
             </td>
             <td>
-                <input class="requirements" type="number" id="skillDamageThreeRequirement" min="1" max="99" step="1" value="10"></input>    
+                <input class="requirements" type="number" min="1" max="99" step="1" value="10"></input>    
             </td>
         </tr>
         <tr>
@@ -309,7 +312,7 @@
                 <label for="skillDamageFour">Faith</label>
             </td>
             <td>
-                <select class="grades" id="skillDamageFourGrade">
+                <select class="grades">
                     <option value="F">-</option>
                     <option value="S">S</option>
                     <option value="A">A</option>
@@ -318,10 +321,10 @@
                     <option value="D">D</option>
                     <option value="E">E</option>
                 </select>
-                <input class="floats" type="number" id="skillDamageFourGradeFloat" min="0" max="2" value="0" step="0.01" hidden></input>
+                <input class="floats" type="number" min="0" max="2" value="0" step="0.01" hidden></input>
             </td>
             <td>
-                <input class="requirements" type="number" id="skillDamageFourRequirement" min="1" max="99" step="1" value="10"></input>
+                <input class="requirements" type="number" min="1" max="99" step="1" value="10"></input>
             </td>
         </tr>
     </table>
