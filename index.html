@@ -7,108 +7,436 @@
     <meta name="description" content="" />
     <link rel="icon" href="images/favicon.jpg">
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <h1>Soulsbourne Respeccer</h1>
     <h2>Initial Stats</h2>
-    <p>Input your current stats and number of levels to put into them</p>
-    <img class="skillSprite" src="images/dark_souls/strength_sprite.png">
-    <label for="skillDamageOne">Strength</label>
-    <input type="number" id="skillDamageOne" min="1" max="99" step="1" value="10"></input>
-    <br>
-    <img class="skillSprite" src="images/dark_souls/dexterity_sprite.png">
-    <label for="skillDamageTwo">Dexterity</label>
-    <input type="number" id="skillDamageTwo" min="1" max="99" step="1" value="10"></input>   
-    <br>
-    <img class="skillSprite" src="images/dark_souls/intelligence_sprite.png">
-    <label for="skillDamageThree">Intelligence</label>
-    <input type="number" id="skillDamageThree" min="1" max="99" step="1" value="10"></input>    
-    <br>
-    <img class="skillSprite" src="images/dark_souls/faith_sprite.png">
-    <label for="skillDamageFour">Faith</label>
-    <input type="number" id="skillDamageFour" min="1" max="99" step="1" value="10"></input>
-    <br>
-    <img class="skillSprite" src="images/dark_souls/level_sprite.png">
-    <label for="levelInput">Levels To Input</label>
-    <input type="number" id="levelInput" min="0" max="713" step="1", value="0"></input>
-    <br>
+    <p class="instructions">Input your current stats and number of levels to put into them</p>
+    <table style="width:25%">
+      <tr>
+        <th>Skill</th>
+        <th>Points</th>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/vitality_sprite.png">
+            <label for="skillMiscOne">Vitality</label>
+        </td>
+        <td>
+            <input class="initialStats misc" type="number" id="skillMiscOne" min="1" max="99" step="1" value="10"></input>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/attunement_sprite.png">
+            <label for="skillMiscTwo">Attunement</label>
+        </td>
+        <td>
+            <input class="initialStats misc" type="number" id="skillMiscTwo" min="1" max="99" step="1" value="10"></input>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/endurance_sprite.png">
+            <label for="skillMiscThree">Endurance</label>
+        </td>
+        <td>
+            <input class="initialStats misc" type="number" id="skillMiscThree" min="1" max="99" step="1" value="10"></input>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/strength_sprite.png">
+            <label for="skillDamageOne">Strength</label>
+        </td>
+        <td>
+            <input class="initialStats damage" type="number" id="skillDamageOne" min="1" max="99" step="1" value="10"></input>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/dexterity_sprite.png">
+            <label for="skillDamageTwo">Dexterity</label>
+        </td>
+        <td>
+            <input class="initialStats damage" type="number" id="skillDamageTwo" min="1" max="99" step="1" value="10"></input>   
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/intelligence_sprite.png">
+            <label for="skillDamageThree">Intelligence</label>
+        </td>
+        <td>
+            <input class="initialStats damage" type="number" id="skillDamageThree" min="1" max="99" step="1" value="10"></input>    
+        </td>
+      </tr>
+      <tr>
+      <td>
+        <img class="skillSprite" src="images/dark_souls/resistance_sprite.png">
+        <label for="skillMiscFour">Resistance</label>
+      </td>
+      <td>
+        <input class="initialStats misc" type="number" id="skillMiscFour" min="1" max="99" step="1" value="10"></input>
+      </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/faith_sprite.png">
+            <label for="skillDamageFour">Faith</label>
+        </td>
+        <td>
+            <input class="initialStats damage" type="number" id="skillDamageFour" min="1" max="99" step="1" value="10"></input>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/level_sprite.png">
+            <label for="levelInput">Levels to Input</label>
+        </td>
+        <td>
+            <input type="number" id="levelInput" min="0" max="712" step="1", value="0"></input>
+        </td>
+    </table>
+    <table style="width: 25%;">
+        <th>Skill Type</th>
+        <th>Points</th>
+        <tr>
+            <td>
+                <label for="damageSkillInput">Damaging Skills</label>
+            </td>
+            <td>
+                <input type="number" id="damageSkillInput" min="0" max="713" step="1" value="0" ></input>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="miscSkillInput">Misc Skills</label>
+            </td>
+            <td>
+                <input type="number" id="miscSkillInput" min="0" max="713" step="1" value="0" ></input>
+            </td>
+        </tr>
+    </table>
+    <label for="levelInputRange"><b>Split between levelling use</b></label>
+    <table style="width: 40%;">
+        <tr>
+            <td>
+                Slider Input
+            </td>
+            <td>
+                <center>Basic<input type="range" id="levelInputRange" min="0" max="100" step="1" value="50"></input>Damage</center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Exact Input
+            </td>
+            <td><center>
+                Basic
+                <input type="number" id="levelInputBasicNumber" min="0" max="100" step="1" value="50">/
+                <input type="number" id="levelInputDamageNumber" min="0" max="100" step="1" value="50">%
+                Damage</center>
+            </td>
+        </tr>
+    </table>
+    <h2>Basic Skill Distribution</h2>
+    <div class="instructions">
+        <p>Rank the order of importance of the basic skills (Vitality, Attunement, Endurance, Resistance) to distribute them as you want.</p>
+        <p>Alternatively, click toggle respeccing for these so you can input them yourself.</p>
+    </div>
+    <table class="basicSkills" style="width: 30%;">
+        <tr>
+            <th>Skill</th>
+            <th>Rank</th>
+        </tr>
+        <tr>
+            <td>
+                <img class="skillSprite" src="images/dark_souls/vitality_sprite.png">
+                <label for="skillMiscOneRank">Vitality</label>
+            </td>
+            <td>
+                <select class="skillMiscRank">
+                    <option value="F">-</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img class="skillSprite" src="images/dark_souls/attunement_sprite.png">
+                <label for="skillMiscTwoRank">Attunement</label>
+            </td>
+            <td>
+                <select class="skillMiscRank">
+                    <option value="F">-</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img class="skillSprite" src="images/dark_souls/endurance_sprite.png">
+                <label for="skillMiscThreeRank">Endurance</label>
+            </td>
+            <td> 
+                <select class="skillMiscRank">
+                    <option value="F">-</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img class="skillSprite" src="images/dark_souls/resistance_sprite.png">
+                <label for="skillMiscFourRank">Resistance</label>
+            </td> 
+            <td>
+                <select class="skillMiscRank">
+                    <option value="F">-</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+            </td>
+        </tr>
+    </table>
     <h2>Weapon Properties</h2>
-    <p>Input damage scaling (letter grades), stat requirements to wield them and their base damages (physical and magical) to find the optimal stats to maximise damage output.</p>
-    <p>For damage scaling, input the letter grade (S, A, B, C, D, E) or "-" if the weapon does not scale with that stat.</p>
-    <p>For stat requirements, input the minimum stat required to wield the weapon.</p>
-    <p>Note that all number values must be non-negative integers.</p>
-    <img class="skillSprite" src="images/dark_souls/strength_sprite.png">
-    <label for="skillDamageOneGrade">Strength</label>
-    <select id="skillDamageOneGrade">
-        <option value="F">-</option>
-        <option value="S">S</option>
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="E">E</option>
-    </select>
-    <input type="number" id="skillDamageOneRequirement" min="1" max="99" step="1" value="10"></input>
-   <br>
-    <img class="skillSprite" src="images/dark_souls/dexterity_sprite.png">
-    <label for="skillDamageTwoGrade">Dexterity</label>
-    <select id="skillDamageTwoGrade">
-        <option value="F">-</option>
-        <option value="S">S</option>
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="E">E</option>
-    </select>
-    <input type="number" id="skillDamageTwoRequirement" min="1" max="99" step="1" value="10"></input>   
+    <div class="instructions">
+        <p>Input damage scaling (letter grades), stat requirements to wield them and their base damages (physical and magical) to find the optimal stats to maximise damage output.</p>
+        <p>For damage scaling, input the letter grade (S, A, B, C, D, E) or "-" if the weapon does not scale with that stat.</p>
+        <p>For stat requirements, input the minimum stat required to wield the weapon.</p>
+        <p>Note that all number values must be non-negative integers.</p>
+        <p>Click the "Respec" button to calculate the optimal stats to maximise damage output.</p>
+    </div>
+    <label for="scaleType"><b>Scale type for weapon skills</b></label>
     <br>
-    <img class="skillSprite" src="images/dark_souls/intelligence_sprite.png">
-    <label for="skillDamageThreeGrade">Intelligence</label>
-    <select id="skillDamageThreeGrade">
-        <option value="F">-</option>
-        <option value="S">S</option>
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="E">E</option>
+    <select id="scaleType">
+        <option value="grades">Grade</option>
+        <option value="float">Float</option>
     </select>
-    <input type="number" id="skillDamageThreeRequirement" min="1" max="99" step="1" value="10"></input>    
-    <br>
-    <img class="skillSprite" src="images/dark_souls/faith_sprite.png">
-    <label for="skillDamageFourGrade">Faith</label>
-    <select id="skillDamageFourGrade">
-        <option value="F">-</option>
-        <option value="S">S</option>
-        <option value="A">A</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="D">D</option>
-        <option value="E">E</option>
-    </select>
-    <input type="number" id="skillDamageFourRequirement" min="1" max="99" step="1" value="10"></input>
-    <br>
-    <label for="physicalDamage">Base Physical Damage</label>
-    <input type="number" id="physicalDamage" type="number" min="0" value="0"></input>
-    <br>
-    <label for="magicDamage">Base Magic Damage</label>
-    <input type="number" id="magicDamage" type="number" min="0" value="0"></input>
+    <table style="width: 30%;">
+        <tr>
+            <th>Skill</th>
+            <th>Scale</th>
+            <th>Requirement</th>
+        </tr>
+        <tr>
+            <td>
+                <img class="skillSprite" src="images/dark_souls/strength_sprite.png">
+                <label for="skillDamageOne">Strength</label>
+            </td>
+            <td>
+                <select class="grades">
+                    <option value="F">-</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+                <input class="floats" type="number" min="0" max="2" value="0" step="0.01" hidden></input>
+            </td>
+            <td>
+                <input class="requirements" type="number" min="1" max="99" step="1" value="10"></input>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img class="skillSprite" src="images/dark_souls/dexterity_sprite.png">
+                <label for="skillDamageTwo">Dexterity</label>
+            </td>
+            <td>
+                <select class="grades">
+                    <option value="F">-</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+                <input class="floats" type="number" min="0" max="2" value="0" step="0.01" hidden></input>
+            </td>
+            <td>
+                <input class="requirements" type="number" min="1" max="99" step="1" value="10"></input>   
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img class="skillSprite" src="images/dark_souls/intelligence_sprite.png">
+                <label for="skillDamageThree">Intelligence</label>
+            </td>
+            <td>
+                <select class="grades">
+                    <option value="F">-</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+                <input class="floats" type="number" min="0" max="2" value="0" step="0.01" hidden></input>
+            </td>
+            <td>
+                <input class="requirements" type="number" min="1" max="99" step="1" value="10"></input>    
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img class="skillSprite" src="images/dark_souls/faith_sprite.png">
+                <label for="skillDamageFour">Faith</label>
+            </td>
+            <td>
+                <select class="grades">
+                    <option value="F">-</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                </select>
+                <input class="floats" type="number" min="0" max="2" value="0" step="0.01" hidden></input>
+            </td>
+            <td>
+                <input class="requirements" type="number" min="1" max="99" step="1" value="10"></input>
+            </td>
+        </tr>
+    </table>
+    <table style="width: 30%;">
+        <th>Damage Type</th>
+        <th>Base Damage</th>
+        <tr>
+            <td>
+                <label for="physicalDamage">Physical</label>
+            </td>
+            <td>
+                <input type="number" id="physicalDamage" type="number" min="0" value="0"></input>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="magicDamage">Magic</label>
+            </td>
+            <td>
+                <input type="number" id="magicDamage" type="number" min="0" value="0"></input>
+            </td>
+        </tr>
+    </table>
+    <label for="toggleMagic"><b>Is Occult/Enchanted/Divine or spell tool?</b></label>
+    <input type="checkbox" id="toggleMagic"></input>
     <br>
     <button id="respecButton">Respec</button>
     <h2>Optimal Solution</h2>
-    <p>Optimal stats to maximise damage output</p>
-    <div id="output">
-        <label for="skillDamageOneOutput">Strength</label>
-        <input type="text" id="skillDamageOneOutput" value="10" readonly></input>
-        <label for="skillDamageTwoOutput">Dexterity</label>
-        <input type="text" id="skillDamageTwoOutput" value="10" readonly></input>   
-        <label for="skillDamageThreeOutput">Intelligence</label>
-        <input type="text" id="skillDamageThreeOutput" value="10" readonly></input>    
-        <label for="skillDamageFourOutput">Faith</label>
-        <input type="text" id="skillDamageFourOutput" value="10" readonly></input>
-    </div>
+    <p class="instructions">Optimal stats to maximise damage output</p>
+    <table style="width:25%">
+      <tr>
+        <th>Skill</th>
+        <th>Points</th>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/vitality_sprite.png">
+            <label for="skillMiscOneOutput">Vitality</label>
+        </td>
+        <td>
+            <input class="output misc" type="number" id="skillMiscOneOutput" min="1" max="99" step="1" value="10" readonly></input>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/attunement_sprite.png">
+            <label for="skillMiscTwoOutput">Attunement</label>
+        </td>
+        <td>
+            <input class="output misc" type="number" id="skillMiscTwoOutput" min="1" max="99" step="1" value="10" readonly></input>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/endurance_sprite.png">
+            <label for="skillMiscThreeOutput">Endurance</label>
+        </td>
+        <td>
+            <input class="output misc" type="number" id="skillMiscThreeOutput" min="1" max="99" step="1" value="10" readonly></input>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/strength_sprite.png">
+            <label for="skillDamageOneOutput">Strength</label>
+        </td>
+        <td>
+            <input class="output damage" type="number" id="skillDamageOneOutput" min="1" max="99" step="1" value="10" readonly></input>
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/dexterity_sprite.png">
+            <label for="skillDamageTwoOutput">Dexterity</label>
+        </td>
+        <td>
+            <input class="output damage" type="number" id="skillDamageTwoOutput" min="1" max="99" step="1" value="10" readonly></input>   
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/intelligence_sprite.png">
+            <label for="skillDamageThreeOutput">Intelligence</label>
+        </td>
+        <td>
+            <input class="output damage" type="number" id="skillDamageThreeOutput" min="1" max="99" step="1" value="10" readonly></input>    
+        </td>
+      </tr>
+      <tr>
+      <td>
+        <img class="skillSprite" src="images/dark_souls/resistance_sprite.png">
+        <label for="skillMiscFourOutput">Resistance</label>
+      </td>
+      <td>
+        <input class="output misc" type="number" id="skillMiscFourOutput" min="1" max="99" step="1" value="10" readonly></input>
+      </td>
+      </tr>
+      <tr>
+        <td>
+            <img class="skillSprite" src="images/dark_souls/faith_sprite.png">
+            <label for="skillDamageFourOutput">Faith</label>
+        </td>
+        <td>
+            <input class="output damage" type="number" id="skillDamageFourOutput" min="1" max="99" step="1" value="10" readonly></input>
+        </td>
+      </tr>
+    </table>
     <br>
-    <script src="script.js"></script>
+    <h3>Settings</h3>
+    <p class="instructions"><b>Contains settings for the site.</b></p>
+    <label for="toggleInstructions">Toggle Instructions</label>
+    <input type="checkbox" id="toggleInstructions" checked></input>
+    <script src="scripts/site_dynamics.js"></script>
+    <script src="scripts/damage_optimization_script.js"></script>
+    <script src="scripts/basic_optimization_script.js"></script>
 </body>
 </html>
