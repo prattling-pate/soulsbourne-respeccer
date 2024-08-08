@@ -79,16 +79,6 @@ $("#levelInputBasicNumber").on("change", updateLevels);
 $("#damageSkillInput").on("change", updateSplit)
 $("#miscSkillInput").on("change", updateSplit)
 
-// hide/show the basic skill ranking based on toggle checkbox
-$("#toggleBasicRespec").on("change", function() {
-    if ($("#toggleBasicRespec").prop("checked")) {
-        $(".basicSkills").show();
-    }
-    else {
-        $(".basicSkills").hide();
-    }
-})
-
 $("#toggleInstructions").on("change", function() {
     if ($("#toggleInstructions").prop("checked")) {
         $(".instructions").show();
