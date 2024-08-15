@@ -7,12 +7,21 @@ import UserInput from "./UserInput";
 
 function App() {
   const [currentGame, setCurrentGame] = useState(getGame("Dark Souls 1"));
-  const userInput = getDefaultUserInput(currentGame.name);
+  const [userInput, setUserInput] = useState(
+    getDefaultUserInput(currentGame.name)
+  );
   return (
     <div className="App">
       <h1>{`Soulsbourne Respeccer - ${currentGame.name}`}</h1>
-      <UserInput game={currentGame.name} skillNames={currentGame.skillNames} skills={userInput.skills}/>
-      <Settings setGameSelected={setCurrentGame} />
+      <UserInput
+        game={currentGame.name}
+        skillNames={currentGame.skillNames}
+        userInput={userInput}
+        setUserInput={setUserInput}
+        basicSkillsNames={currentGame.basicSkillsNames}
+        damageSkillsNames={currentGame.damageSkillsNames}
+      />
+      <Settings setGameSelected={setCurrentGame} setUserInput={setUserInput}/>
     </div>
   );
 }

@@ -2,14 +2,11 @@ type weapon = {
   requirements: number[];
   scaling: number[] | string[];
   damages: {
-    physical: number;
-    magical: number;
-    fire: number;
-    lightning: number;
+    [key : string]: number;
   };
 };
 
-type userInput = {
+export type userInput = {
   skills: number[];
   basicSkillScaling: number[] | string[];
   weapon: weapon;
@@ -22,8 +19,8 @@ export default function getDefaultUserInput(game: string): userInput {
         skills: [10, 10, 10, 10, 10, 10, 10, 10],
         basicSkillScaling: ["F", "F", "F", "F"],
         weapon: {
-          requirements: [0, 0, 0, 0],
-          scaling: [0, 0, 0, 0],
+          requirements: [10, 10, 10, 10],
+          scaling: ["F", "F", "F", "F"],
           damages: { physical: 0, magical: 0, fire: 0, lightning: 0 },
         },
       };
@@ -49,11 +46,11 @@ export default function getDefaultUserInput(game: string): userInput {
       };
     case "Elden Ring":
       return {
-        skills: [10, 10, 10, 10, 10, 10, 10, 10, 10],
-        basicSkillScaling: ["F", "F", "F", "F", "F"],
+        skills: [10, 10, 10, 10, 10, 10, 10, 10],
+        basicSkillScaling: ["F", "F", "F"],
         weapon: {
-          requirements: [0, 0, 0, 0],
-          scaling: [0, 0, 0, 0],
+          requirements: [10, 10, 10, 10, 10],
+          scaling: [0, 0, 0, 0, 0],
           damages: { physical: 0, magical: 0, fire: 0, lightning: 0 },
         },
       };

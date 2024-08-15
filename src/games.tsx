@@ -5,8 +5,8 @@ type softCaps = number[][] | null | { standard: number[]; magical: number[] };
 type game = {
   name: string;
   skillNames: skillNames;
-  basicSkillsName: skillNames;
-  damageSkillsName: skillNames;
+  basicSkillsNames: skillNames;
+  damageSkillsNames: skillNames;
   specialSkillNames: skillNames;
   basicSoftCaps: softCaps;
   damageSoftCaps: softCaps;
@@ -25,8 +25,8 @@ const darkSouls1: game = {
     "Intelligence",
     "Faith",
   ],
-  basicSkillsName: ["Vitality", "Attunement", "Endurance", "Resistance"],
-  damageSkillsName: ["Strength", "Dexterity", "Intelligence", "Faith"],
+  basicSkillsNames: ["Vitality", "Attunement", "Endurance", "Resistance"],
+  damageSkillsNames: ["Strength", "Dexterity", "Intelligence", "Faith"],
   specialSkillNames: null,
   damageSoftCaps: { standard: [1, 20, 40, 99], magical: [1, 30, 50, 99] },
   basicSoftCaps: [
@@ -52,8 +52,8 @@ const darkSouls2: game = {
     "Intelligence",
     "Faith",
   ],
-  basicSkillsName: ["Vigor", "Endurance", "Vitality", "Attunement"],
-  damageSkillsName: ["Strength", "Dexterity", "Intelligence", "Faith"],
+  basicSkillsNames: ["Vigor", "Endurance", "Vitality", "Attunement"],
+  damageSkillsNames: ["Strength", "Dexterity", "Intelligence", "Faith"],
   specialSkillNames: ["Adaptability"],
   damageSoftCaps: { standard: [1, 20, 40, 99], magical: [1, 30, 50, 99] },
   basicSoftCaps: [[20, 50, 99]],
@@ -73,8 +73,8 @@ const darkSouls3: game = {
     "Faith",
     "Luck",
   ],
-  basicSkillsName: ["Vigor", "Attunement", "Endurance", "Vitality"],
-  damageSkillsName: ["Strength", "Dexterity", "Intelligence", "Faith", "Luck"],
+  basicSkillsNames: ["Vigor", "Attunement", "Endurance", "Vitality"],
+  damageSkillsNames: ["Strength", "Dexterity", "Intelligence", "Faith", "Luck"],
   specialSkillNames: null,
   damageSoftCaps: { standard: [1, 40, 60, 99], magical: [1, 40, 60, 99] },
   basicSoftCaps: [[27, 40, 99]],
@@ -85,17 +85,17 @@ const eldenRing: game = {
   name: "Elden Ring",
   skillNames: [
     "Vigor",
-    "Willpower",
+    "Mind",
     "Endurance",
     "Strength",
     "Dexterity",
     "Intelligence",
     "Faith",
-    "Spirit",
+    "Arcane",
   ],
-  basicSkillsName: ["Vigor", "Willpower", "Endurance", "Strength", "Dexterity"],
-  damageSkillsName: ["Intelligence", "Faith"],
-  specialSkillNames: ["Spirit"],
+  basicSkillsNames: ["Vigor", "Mind", "Endurance"],
+  damageSkillsNames: ["Strength", "Dexterity", "Intelligence", "Faith", "Arcane"],
+  specialSkillNames: null,
   damageSoftCaps: { standard: [1, 40, 60, 99], magical: [1, 40, 60, 99] },
   basicSoftCaps: [[20, 40, 99]],
   specialSoftCaps: [[20, 40, 99]],
